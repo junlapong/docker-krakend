@@ -1,0 +1,43 @@
+{
+	"version": 2,
+	"name": "api proxy",
+	"port": 8080,
+	"cache_ttl": "3600s",
+	"timeout": "3s",
+	"endpoints": [
+		{
+			"endpoint": "/api/users",
+			"method": "GET",
+			"output_encoding": "no-op",
+			"backend": [
+				{
+					"method": "GET",
+					"url_pattern": "/users",
+					"encoding": "no-op",
+					"extra_config": {},
+					"host": [
+						"https://jsonplaceholder.typicode.com"
+					],
+					"disable_host_sanitize": false
+				}
+			]
+		},
+		{
+			"endpoint": "/api/users/{id}",
+			"method": "GET",
+			"output_encoding": "no-op",
+			"backend": [
+				{
+					"method": "GET",
+					"url_pattern": "/users/{id}",
+					"encoding": "no-op",
+					"extra_config": {},
+					"host": [
+						"https://jsonplaceholder.typicode.com"
+					],
+					"disable_host_sanitize": false
+				}
+			]
+		}
+	]
+}
