@@ -1,10 +1,12 @@
 # Docker KrakenD
 
-## Run
+## Docker
 
-	./run.sh
+### Run
 
-## Test
+	docker run -p 8080:8080 -v $PWD/config:/etc/krakend/:ro devopsfaith/krakend
+
+### Test
 
 	http :8080/api/users/1
 
@@ -16,25 +18,37 @@
 	X-Krakend-Completed: false
 
     {
-        "address": {
-            "city": "Gwenborough",
-            "geo": {
-                "lat": "-37.3159",
-                "lng": "81.1496"
-            },
-            "street": "Kulas Light",
-            "suite": "Apt. 556",
-            "zipcode": "92998-3874"
-        },
-        "company": {
-            "bs": "harness real-time e-markets",
-            "catchPhrase": "Multi-layered client-server neural-net",
-            "name": "Romaguera-Crona"
-        },
-        "email": "Sincere@april.biz",
-        "id": 1,
-        "name": "Leanne Graham",
-        "phone": "1-770-736-8031 x56442",
-        "username": "Bret",
-        "website": "hildegard.org"
-    }
+		...
+	}
+
+## macOS
+
+### Install
+
+	brew install krakend
+
+### Run
+
+	krakend -c config/krakend-short.json run
+
+### Test
+
+	http :8080/api/todos/1
+
+	HTTP/1.1 200 OK
+	Access-Control-Allow-Credentials: true
+	Cache-Control: public, max-age=14400
+	Content-Length: 99
+	Content-Type: application/json; charset=utf-8
+	Date: Wed, 19 Jun 2019 02:00:36 GMT
+	Etag: W/"63-+s0zIP5ZEQN9hypVJUneLybJ+L0"
+	Expires: Wed, 19 Jun 2019 06:00:36 GMT
+	Pragma: no-cache
+	X-Content-Type-Options: nosniff
+	X-Krakend: Version 0.9.0
+	X-Krakend-Completed: false
+	X-Powered-By: Express
+
+	{
+		...
+	}
